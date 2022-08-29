@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,4 +23,10 @@ Route::get('/', function () {
 
 Route::controller(LoginController::class)->group(function () {
     Route::post('/login','loginUser')->name('user.login');
+});
+
+Route::controller(DashboardController::class)->group(function () {
+  Route::group(['prefix'=>'admin/dashboard'], function(){
+      Route::get('/','getDashbaord')->name('admin.dashboard.index');
+  });
 });

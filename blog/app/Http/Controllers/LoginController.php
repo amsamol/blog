@@ -12,9 +12,9 @@ class LoginController extends Controller
       $email = $request->email;
       $password = $request->password;
       if (Auth::attempt(['email' => $email, 'password' => $password, 'is_active' => 1])) {
-        return "OK";
+        return redirect(route('admin.dashboard.index'));
       }else{
-        return "NO";
+        return redirect(route('user.login'));
       }
     }
 }
