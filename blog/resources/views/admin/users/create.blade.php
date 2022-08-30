@@ -15,7 +15,7 @@
         </ul>
     </div>
 @endif
-  <form class="" action="{{route('admin.dashboard.users.store')}}" method="post">
+  <form class="" action="{{route('admin.dashboard.users.store')}}" method="post" enctype="multipart/form-data">
     @csrf
       <div class="form-group">
         <label for="name">Name</label>
@@ -28,6 +28,18 @@
       <div class="form-group">
         <label for="password">Password</label>
         <input type="password" name="password" required placeholder="Password" class="form-control">
+      </div>
+      <div class="form-group">
+        <select class="form-control" name="gender_id">
+          <option value="" style="display:none">Select Gender</option>
+          @foreach($genders as $gender)
+          <option value="{{$gender->id}}">{{$gender->name}}</option>
+          @endforeach
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="profile">Profile</label>
+        <input type="file" name="profile" class="form-control">
       </div>
       <button type="submit" name="submit" class="btn btn-primary">Save</button>
   </form>

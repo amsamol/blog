@@ -17,7 +17,9 @@
         <tr>
           <th>#</th>
           <th>Name</th>
+          <th>Profile</th>
           <th>Email</th>
+          <th>Gender</th>
           <th>Status</th>
           <th>Action</th>
         </tr>
@@ -30,7 +32,9 @@
         <tr>
           <td>{{$i++}}</td>
           <td>{{$user->name}}</td>
+          <th><img src="{{asset('/assets/uploads/profiles/thumbnail/')}}/{{$user->profile}}" alt="{{$user->profile}}" style="width:50px"> </th>
           <td>{{$user->email}}</td>
+          <td>{{$user->gender['name']}}</td>
           <td>
             @if($user->is_active == 1)
               <span>Active</span>

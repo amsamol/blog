@@ -8,6 +8,11 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <style media="screen">
+    a{
+      color: #333;
+    }
+  </style>
 </head>
 <body>
 
@@ -36,8 +41,8 @@
     <div class="col-12 col-sm-12 col-md-3">
       <div class="nav-side">
         <ul class="list-group">
-          <li class="list-group-item active">Dashboard</li>
-          <li class="list-group-item"><a href="#">Home</a> </li>
+          <li class="list-group-item active">Navication</li>
+          <li class="list-group-item"><a href="#">Dashboard</a> </li>
           <li class="list-group-item"><a href="{{route('admin.dashboard.users.index')}}">Users</a> </li>
           <li class="list-group-item"><a href="#">Categories</a> </li>
           <li class="list-group-item"><a href="#">Sub Categories</a> </li>
