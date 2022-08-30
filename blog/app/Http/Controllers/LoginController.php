@@ -7,6 +7,10 @@ use App\Models\User;
 use Auth;
 class LoginController extends Controller
 {
+  public function login()
+  {
+    return view('login');
+  }
     public function loginUser(Request $request)
     {
       $email = $request->email;
