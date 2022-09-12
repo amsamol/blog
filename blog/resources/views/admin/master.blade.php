@@ -27,7 +27,7 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Profile</a>
+          <a class="nav-link" href="{{route('admin.dashboard.users.profile',Auth::User()->id)}}">Profile</a>
         </li>
       </ul>
     </div>
@@ -44,8 +44,8 @@
           <li class="list-group-item active">Navication</li>
           <li class="list-group-item"><a href="#">Dashboard</a> </li>
           <li class="list-group-item"><a href="{{route('admin.dashboard.users.index')}}">Users</a> </li>
-          <li class="list-group-item"><a href="#">Categories</a> </li>
-          <li class="list-group-item"><a href="#">Sub Categories</a> </li>
+          <li class="list-group-item"><a href="{{route('admin.dashboard.categories.index')}}">Categories</a> </li>
+          <li class="list-group-item"><a href="{{route('admin.dashboard.subcategories.index')}}">Sub Categories</a> </li>
           <li class="list-group-item"><a href="#">Posts</a> </li>
           <li class="list-group-item"><a href="{{route('admin.dashboard.users.logout')}}">Logout</a> </li>
 

@@ -1,11 +1,11 @@
 @extends('admin.master')
 @section('title')
-  All User
+  All Categories
 @stop
 
 @section('content')
 <div class="content text-left">
-  <a href="{{route('admin.dashboard.users.create')}}" class="btn btn-primary mb-2">Create new</a>
+  <a href="{{route('admin.dashboard.categories.create')}}" class="btn btn-primary mb-2">Create new</a>
   @if(Session::get('success'))
           <div class="alert alert-success">
               {{session::get('success')}}
@@ -17,37 +17,37 @@
         <tr>
           <th>#</th>
           <th>Name</th>
-          <th>Profile</th>
-          <th>Email</th>
-          <th>Gender</th>
           <th>Status</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
+        @if(count($categories) > 0)
         @php
           $i = 1;
         @endphp
-        @foreach($users as $user)
+        @foreach($categories as $category)
         <tr>
           <td>{{$i++}}</td>
-          <td>{{$user->name}}</td>
-          <th><img src="{{asset('/assets/uploads/profiles/')}}/{{$user->profile}}" alt="{{$user->profile}}" style="width:50px"> </th>
-          <td>{{$user->email}}</td>
-          <td>{{$user->gender['name']}}</td>
+          <td>{{$category->name}}</td>
           <td>
-            @if($user->is_active == 1)
+            @if($category->is_active == 1)
               <span>Active</span>
             @else
               <span>InActive</span>
             @endif
           </td>
           <td>
-            <a href="{{route('admin.dashboard.users.edit',$user->id)}}" class="btn btn-primary">Edit</a>
-            <a href="{{route('admin.dashboard.users.delete',$user->id)}}" class="btn btn-danger">Delete</a>
+            <a href="{{route('admin.dashboard.categories.edit',$category->id)}}" class="btn btn-primary">Edit</a>
+            <a href="{{route('admin.dashboard.categories.delete',$category->id)}}" class="btn btn-danger">Delete</a>
           </td>
         </tr>
         @endforeach
+        @else
+          <tr class="text-center">
+            <td colspan="4">No record</td>
+          </tr>
+        @endif
       </tbody>
     </table>
   </div>

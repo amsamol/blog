@@ -49,9 +49,8 @@ class UserController extends Controller
             $image = $request->profile;
             $user->profile = $fileName;
             $image_resize = Image::make($image->getRealPath());
-            $image_resize->save(public_path('assets/uploads/profiles/'.$fileName));
             $image_resize->resize(350, 350);
-            $image_resize->save(public_path('assets/uploads/profiles/thumbnail/'.$fileName));
+            $image_resize->save(public_path('assets/uploads/profiles/'.$fileName));
       }
       if($user->save()){
         return redirect(route('admin.dashboard.users.index'))->withSuccess('The data has been added');
@@ -83,18 +82,11 @@ class UserController extends Controller
       $user->email = $request->email;
       $user->gender_id = $request->gender_id;
       if (!empty($request->profile)) {
-            $image_path_original = public_path('assets/uploads/profiles/'.$request->profile);
-            $image_path_thumbnail = public_path('assets/uploads/profiles/thumbnail/'.$request->profile);
-            if(File::exists($image_path_original && $image_path_thumbnail)) {
-                File::delete($image_path_original);
-                File::delete($image_path_thumbnail);
-            }
             $image = $request->profile;
             $user->profile = $fileName;
             $image_resize = Image::make($image->getRealPath());
-            $image_resize->save(public_path('assets/uploads/profiles/'.$fileName));
             $image_resize->resize(350, 350);
-            $image_resize->save(public_path('assets/uploads/profiles/thumbnail/'.$fileName));
+            $image_resize->save(public_path('assets/uploads/profiles/'.$fileName));
       }
       if($user->save()){
         return redirect(route('admin.dashboard.users.index'))->withSuccess('The data has been updated');
@@ -116,5 +108,43 @@ class UserController extends Controller
     public function logout(Request $request) {
       Auth::logout();
       return redirect('/');
+    }
+
+    public function profileUser()
+    {
+      $id = Auth::User()->id;
+      $user = User::find($id);
+      $genders = Gender::all();
+      return view('admin.users.profile',compact('user','genders'));
+
+    }
+
+    public function updateProfile(Request $request)
+    {
+      if (!empty($request->profile)) {
+          $fileName = time().'.'.$request->profile->getClientOriginalName();
+      }
+      $validated = $request->validate([
+        'name' => 'required',
+        'email' => 'required',
+        'gender_id' => 'required'
+      ]);
+      $id = Auth::User()->id;
+      $user = User::find($id);
+      $user->name = $request->name;
+      $user->email = $request->email;
+      $user->gender_id = $request->gender_id;
+      if (!empty($request->profile)) {
+            $image = $request->profile;
+            $user->profile = $fileName;
+            $image_resize = Image::make($image->getRealPath());
+            $image_resize->resize(350, 350);
+            $image_resize->save(public_path('assets/uploads/profiles/'.$fileName));
+      }
+      if($user->save()){
+        return redirect(route('admin.dashboard.users.index'))->withSuccess('The data has been updated');
+      }else{
+        return back();
+      }
     }
 }

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,7 +37,33 @@ Route::group(['prefix'=>'admin'], function(){
           Route::get('/edit/{id}','editUser')->name('admin.dashboard.users.edit');
           Route::post('/update/{id}','updateUser')->name('admin.dashboard.users.update');
           Route::get('/delete/{id}','deleteUser')->name('admin.dashboard.users.delete');
+          Route::get('/profile/{id}','profileUser')->name('admin.dashboard.users.profile');
+          Route::post('/profile/{id}','updateProfile')->name('admin.dashboard.users.profile.update');
           Route::get('/logout','logout')->name('admin.dashboard.users.logout');
+      });
+    });
+
+    Route::group(['prefix'=>'categories'], function(){
+      // Dashboard
+      Route::controller(CategoryController::class)->group(function () {
+          Route::get('/','getCategories')->name('admin.dashboard.categories.index');
+          Route::get('/create','createCategory')->name('admin.dashboard.categories.create');
+          Route::post('/store','storeCategory')->name('admin.dashboard.categories.store');
+          Route::get('/{id}/edit','editCategory')->name('admin.dashboard.categories.edit');
+          Route::post('/{id}/update','updateCategory')->name('admin.dashboard.categories.update');
+          Route::get('/{id}/delete','deleteCategory')->name('admin.dashboard.categories.delete');
+      });
+    });
+
+    Route::group(['prefix'=>'subcategories'], function(){
+      // Dashboard
+      Route::controller(SubCategoryController::class)->group(function () {
+          Route::get('/','getSubCategories')->name('admin.dashboard.subcategories.index');
+          Route::get('/create','createSubCategory')->name('admin.dashboard.subcategories.create');
+          Route::post('/store','storeSubCategory')->name('admin.dashboard.subcategories.store');
+          Route::get('/{id}/edit','editSubCategory')->name('admin.dashboard.subcategories.edit');
+          Route::post('/{id}/update','updateSubCategory')->name('admin.dashboard.subcategories.update');
+          Route::get('/{id}/delete','deleteSubCategory')->name('admin.dashboard.subcategories.delete');
       });
     });
   });
