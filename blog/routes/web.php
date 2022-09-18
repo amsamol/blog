@@ -6,6 +6,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\PostController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,6 +66,18 @@ Route::group(['prefix'=>'admin'], function(){
           Route::get('/{id}/edit','editSubCategory')->name('admin.dashboard.subcategories.edit');
           Route::post('/{id}/update','updateSubCategory')->name('admin.dashboard.subcategories.update');
           Route::get('/{id}/delete','deleteSubCategory')->name('admin.dashboard.subcategories.delete');
+      });
+    });
+
+     Route::group(['prefix'=>'posts'], function(){
+      // Dashboard
+      Route::controller(PostController::class)->group(function () {
+          Route::get('/','getPosts')->name('admin.dashboard.posts.index');
+          Route::get('/create','createPost')->name('admin.dashboard.posts.create');
+          Route::post('/store','storePost')->name('admin.dashboard.posts.store');
+          Route::get('/{id}/edit','editPost')->name('admin.dashboard.posts.edit');
+          Route::post('/{id}/update','updatePost')->name('admin.dashboard.posts.update');
+          Route::get('/{id}/delete','deletePost')->name('admin.dashboard.posts.delete');
       });
     });
   });

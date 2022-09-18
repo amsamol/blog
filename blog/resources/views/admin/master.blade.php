@@ -46,7 +46,7 @@
           <li class="list-group-item"><a href="{{route('admin.dashboard.users.index')}}">Users</a> </li>
           <li class="list-group-item"><a href="{{route('admin.dashboard.categories.index')}}">Categories</a> </li>
           <li class="list-group-item"><a href="{{route('admin.dashboard.subcategories.index')}}">Sub Categories</a> </li>
-          <li class="list-group-item"><a href="#">Posts</a> </li>
+          <li class="list-group-item"><a href="{{route('admin.dashboard.posts.index')}}">Posts</a> </li>
           <li class="list-group-item"><a href="{{route('admin.dashboard.users.logout')}}">Logout</a> </li>
 
         </ul>
