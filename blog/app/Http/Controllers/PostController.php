@@ -12,6 +12,10 @@ use File;
 use Storage;
 class PostController extends Controller
 {
+    public function __construct()
+   {
+     $this->middleware('auth');
+   }
     public function getPosts()
     {
         $posts = Post::all();

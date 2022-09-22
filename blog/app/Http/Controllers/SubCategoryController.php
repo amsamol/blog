@@ -7,6 +7,10 @@ use App\Models\SubCategory;
 use App\Models\Category;
 class SubCategoryController extends Controller
 {
+    public function __construct()
+   {
+     $this->middleware('auth');
+   }
     public function getSubCategories()
     {
       $subcategories = SubCategory::all();

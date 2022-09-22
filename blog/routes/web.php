@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\PostController;
-
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -80,5 +80,12 @@ Route::group(['prefix'=>'admin'], function(){
           Route::get('/{id}/delete','deletePost')->name('admin.dashboard.posts.delete');
       });
     });
+
+    Route::group(['prefix'=>'comments'], function(){
+     // Dashboard
+     Route::controller(CommentController::class)->group(function () {
+         Route::get('/','getComments')->name('admin.dashboard.comments.index');
+     });
+   });
   });
 });

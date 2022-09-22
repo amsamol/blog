@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('title')
-  All Posts
+  All Comments
 @stop
 
 @section('content')
@@ -16,44 +16,40 @@
       <thead class="bg-primary text-white">
         <tr>
           <th>#</th>
-          <th>Image</th>
           <th>Name</th>
           <th>Post by</th>
-          <th>Category</th>
-          <th>Sub Category</th>
+          <th>Post</th>
           <th>Status</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
-        @if(count($posts) > 0)
+        @if(count($comments) > 0)
         @php
           $i = 1;
         @endphp
-        @foreach($posts as $post)
+        @foreach($comments as $comment)
         <tr>
           <td>{{$i++}}</td>
-          <td><img src="{{asset('/assets/uploads/posts')}}/{{$post->image}}" alt="" style="width:50px"> </td>
-          <td>{{$post->title}}</td>
-          <td>{{$post->user['name']}}</td>
-          <td>{{$post->category['name']}}</td>
-          <td>{{$post->sub_category['name']}}</td>
+          <td>{{$comment->title}}</td>
+          <td>{{$comment->user['name']}}</td>
+          <td>{{$comment->post['title']}}</td>
           <td>
-            @if($post->is_active == 1)
+            @if($comment->is_active == 1)
               <span>Active</span>
             @else
               <span>InActive</span>
             @endif
           </td>
           <td>
-            <a href="{{route('admin.dashboard.posts.edit',$post->id)}}" class="btn btn-primary">Edit</a>
-            <a href="{{route('admin.dashboard.posts.delete',$post->id)}}" class="btn btn-danger">Delete</a>
+            <a href="" class="btn btn-primary">Edit</a>
+            <a href="" class="btn btn-danger">Delete</a>
           </td>
         </tr>
         @endforeach
         @else
           <tr class="text-center">
-            <td colspan="8">No record</td>
+            <td colspan="5">No record</td>
           </tr>
         @endif
       </tbody>
