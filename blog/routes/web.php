@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,9 +21,14 @@ use App\Http\Controllers\CommentController;
 */
 
 Route::controller(LoginController::class)->group(function () {
-    Route::get('/','login')->name('login')->middleware('guest');
+    Route::get('/login','login')->name('login')->middleware('guest');
     Route::post('/login','loginUser')->name('user.login');
 });
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/','getHome')->name('home');
+    Route::get('/article/detail{id}.html','getArticleDetail')->name('article.detail');
+});
+
 Route::group(['prefix'=>'admin'], function(){
   Route::group(['prefix'=>'dashboard'], function(){
     // Dashboard
