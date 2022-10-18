@@ -9,6 +9,8 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SliderController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -86,6 +88,18 @@ Route::group(['prefix'=>'admin'], function(){
           Route::get('/{id}/delete','deletePost')->name('admin.dashboard.posts.delete');
       });
     });
+
+    Route::group(['prefix'=>'sliders'], function(){
+     // Dashboard
+     Route::controller(SliderController::class)->group(function () {
+         Route::get('/','getSliders')->name('admin.dashboard.sliders.index');
+         Route::get('/create','createSlider')->name('admin.dashboard.sliders.create');
+         Route::post('/store','storeSlider')->name('admin.dashboard.sliders.store');
+         Route::get('/{id}/edit','editSlider')->name('admin.dashboard.sliders.edit');
+         Route::post('/{id}/update','updateSlider')->name('admin.dashboard.sliders.update');
+         Route::get('/{id}/delete','deleteSlider')->name('admin.dashboard.sliders.delete');
+     });
+   });
 
     Route::group(['prefix'=>'comments'], function(){
      // Dashboard

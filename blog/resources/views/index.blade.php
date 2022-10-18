@@ -4,6 +4,35 @@
 @stop
 
 @section('content')
+
+  <div class="slider-section mb-4">
+    <div class="container">
+      <div id="demo" class="carousel slide" data-ride="carousel">
+        <ul class="carousel-indicators">
+          @foreach($sliders as $key => $slider)
+          <li data-target="#demo" data-slide-to="{{$key}}" class="{{ $loop->first ? 'active' : '' }}"></li>
+          @endforeach
+        </ul>
+        <div class="carousel-inner">
+
+          @foreach($sliders as $slider)
+          <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+            <img src="{{asset('assets/uploads/sliders/')}}/{{$slider->image}}" alt="{{$slider->name}}" width="100%">
+            <div class="carousel-caption">
+              <h3>{{$slider->name}}</h3>
+            </div>
+          </div>
+        @endforeach
+        </div>
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+    </div>
+  </div>
 @if($posts)
 @foreach($posts as $post)
   <div class="col-12 col-sm-6 col-md-3 col-lg-3">
