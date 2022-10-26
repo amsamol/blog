@@ -31,7 +31,7 @@
           <a class="nav-link" href="{{route('home')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Tutorials</a>
+          <a class="nav-link" href="{{route('tutorials')}}">Tutorials</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">About Us</a>

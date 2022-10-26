@@ -29,6 +29,8 @@ Route::controller(LoginController::class)->group(function () {
 Route::controller(HomeController::class)->group(function () {
     Route::get('/','getHome')->name('home');
     Route::get('/article/detail{id}.html','getArticleDetail')->name('article.detail');
+
+    Route::get('/tutorials.html','getTutorials')->name('tutorials');
 });
 
 Route::group(['prefix'=>'admin'], function(){

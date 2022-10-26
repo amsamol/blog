@@ -19,4 +19,10 @@ class HomeController extends Controller
       $post = Post::find($id);
       return view('detail',compact('post'));
     }
+
+    public function getTutorials()
+    {
+      $posts = Post::orderBy('id','DESC')->paginate(4);
+      return view('tutorial',compact('posts'));
+    }
 }
