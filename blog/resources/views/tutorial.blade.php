@@ -6,6 +6,7 @@
 @section('content')
 
 @if($posts)
+<div class="row">
 @foreach($posts as $post)
   <div class="col-12 col-sm-6 col-md-3 col-lg-3">
     <div class="card">
@@ -20,6 +21,7 @@
     </div>
   </div>
   @endforeach
+</div>
   {{$posts->render()}}
 @endif
 @stop

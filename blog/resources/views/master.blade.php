@@ -50,9 +50,7 @@
 </div>
 
 <div class="section container mt-4">
-    <div class="row">
         @yield('content')
-    </div>
 </div>
 
 </body>

@@ -5,8 +5,7 @@
 
 @section('content')
 
-  <div class="slider-section mb-4">
-    <div class="container">
+  <div class="slider-section mb-4 p-0">
       <div id="demo" class="carousel slide" data-ride="carousel">
         <ul class="carousel-indicators">
           @foreach($sliders as $key => $slider)
@@ -17,7 +16,7 @@
 
           @foreach($sliders as $slider)
           <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-            <img src="{{asset('assets/uploads/sliders/')}}/{{$slider->image}}" alt="{{$slider->name}}" width="100%">
+            <img src="{{asset('assets/uploads/sliders/')}}/{{$slider->image}}" alt="{{$slider->name}}" style="width:100%">
             <div class="carousel-caption">
               <h3>{{$slider->name}}</h3>
             </div>
@@ -31,11 +30,11 @@
           <span class="carousel-control-next-icon"></span>
         </a>
       </div>
-    </div>
   </div>
 @if($posts)
+<div class="row">
 @foreach($posts as $post)
-  <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+  <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-4">
     <div class="card">
       <a href="{{route('article.detail',$post->id)}}">
         <img class="card-img-top" src="{{asset('/assets/uploads/posts/')}}/{{$post->image}}" alt="image" style="width:100%">
@@ -47,6 +46,8 @@
       </div>
     </div>
   </div>
+
   @endforeach
+</div>
 @endif
 @stop
