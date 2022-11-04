@@ -10,7 +10,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SliderController;
-
+use App\Http\Controllers\AboutController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +31,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/article/detail{id}.html','getArticleDetail')->name('article.detail');
 
     Route::get('/tutorials.html','getTutorials')->name('tutorials');
+
+    Route::get('/about-us.html','getAboutUs')->name('about.us');
 });
 
 Route::group(['prefix'=>'admin'], function(){
@@ -102,6 +104,18 @@ Route::group(['prefix'=>'admin'], function(){
          Route::get('/{id}/delete','deleteSlider')->name('admin.dashboard.sliders.delete');
      });
    });
+
+   Route::group(['prefix'=>'abouts'], function(){
+    // Dashboard
+    Route::controller(AboutController::class)->group(function () {
+        Route::get('/','getAboutUs')->name('admin.dashboard.abouts.index');
+        Route::get('/create','createAboutUs')->name('admin.dashboard.abouts.create');
+        Route::post('/store','storeAboutUs')->name('admin.dashboard.abouts.store');
+        Route::get('/edit/{id}','editAboutUs')->name('admin.dashboard.abouts.edit');
+        Route::post('/update/{id}','updateAboutUs')->name('admin.dashboard.abouts.update');
+        Route::get('/delete/{id}','destroyAboutUs')->name('admin.dashboard.abouts.delete');
+    });
+  });
 
     Route::group(['prefix'=>'comments'], function(){
      // Dashboard

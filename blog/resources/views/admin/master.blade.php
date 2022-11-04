@@ -49,6 +49,7 @@
           <li class="list-group-item"><a href="{{route('admin.dashboard.posts.index')}}">Posts</a> </li>
           <li class="list-group-item"><a href="{{route('admin.dashboard.comments.index')}}">Comments</a> </li>
           <li class="list-group-item"><a href="{{route('admin.dashboard.sliders.index')}}">Sliders</a> </li>
+          <li class="list-group-item"><a href="{{route('admin.dashboard.abouts.index')}}">About Us</a> </li>
           <li class="list-group-item"><a href="{{route('admin.dashboard.users.logout')}}">Logout</a> </li>
 
         </ul>
